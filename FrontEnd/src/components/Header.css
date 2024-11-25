@@ -1,0 +1,118 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 15px 7%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+.logo {
+    width: 140px;
+    cursor: pointer;
+    height: 100px;
+}
+
+ul {
+    flex: 1;
+    list-style: none;
+    text-align: center;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+ul li a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from the theme */
+    font-size: 18px; /* Match the font size */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+ul li a:hover {
+    text-decoration: underline; 
+}
+
+.dark ul li a {
+    color: #fff; 
+}
+
+ul li a {
+    color: #000;
+}
+
+.toggle-icon {
+    width: 50px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #242424;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.search-box input {
+    padding: 6px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    font-size: 18px;
+    max-width: 200px;
+}
+
+.search-box input::placeholder {
+    color: #fff;
+}
+
+.search-box img {
+    width: 20px;
+    cursor: pointer;
+}
+
+/* Styling the new Sign In / Sign Up links */
+.auth-links {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Add some space from the search bar */
+}
+
+.auth-link {
+    margin-right: 10px; /* Add space between the links */
+    color: inherit; /* Ensure the color matches the theme */
+    text-decoration: none; /* Remove the underline */
+    font-size: 18px;
+}
+
+.auth-link:hover {
+    text-decoration: underline; /* Underline effect on hover */
+}
+
+/* Dark mode styling */
+.dark .navbar {
+    background: #000;
+    color: #fff;
+}
+
+.dark .search-box {
+    background: #fff;
+}
+
+.dark .search-box input {
+    color: #222;
+}
+
+.dark .search-box input::placeholder {
+    color: #222;
+}
