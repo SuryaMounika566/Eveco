@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-* {
+.login-page {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-}
-
-body {
-    /* background-color: #c9d6ff; */
-    /* background: linear-gradient(to right, #e2e2e2, #c9d6ff); */
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,7 +15,7 @@ body {
 }
 
 .container {
-    background-color: #222;
+    background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
@@ -30,7 +27,7 @@ body {
 
 .container h1 {
     font-size: 24px;
-    font-weight: 700; /* Makes the headings bold */
+    font-weight: 700; 
 }
 
 .container p {

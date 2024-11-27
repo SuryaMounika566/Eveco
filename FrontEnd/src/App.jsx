@@ -1,21 +1,18 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Intial from './LoginAndRegistration/Intial';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Login from './pages/LoginPage'
+import Home from './pages/HomePage'
 
-
-const App = () => {
-    const [count, setCount] = useState(0)
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/initial" element={<Intial />} /> 
-            </Routes>
-        </Router>
-    );
-};
-
-export default App;
-
+export default function App() {
+  return (
+    <div>
+      <Router>
+      <Routes>
+      <Route path="/" element={<Home />} /> 
+      <Route path="/login" element={<Login />} /> 
+      </Routes>
+      </Router>
+    </div>
+  )
+}

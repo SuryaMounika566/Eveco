@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
-import Carousel from '../components/Carousel';
+import Header from '../components/HomePage_Header';
+import Carousel from '../components/HomePage_Carousel';
 
-const HomePage = () => {
+export default function HomePage() {
     const curr_theme = localStorage.getItem('curr_theme');
     const [theme, setTheme] = useState(curr_theme ? curr_theme : 'light');
 
@@ -10,16 +10,10 @@ const HomePage = () => {
         localStorage.setItem('curr_theme', theme);
     }, [theme]);
 
-    console.log('Current Theme:', theme); 
-
     return (
-        <div>
-            <div className={`container ${theme}`}>
-                <Header theme={theme} setTheme={setTheme} />
-                <Carousel />
-            </div>
+        <div className={`container ${theme}`}>
+            <Header theme={theme} setTheme={setTheme} />
+            <Carousel />
         </div>
     );
-};
-
-export default HomePage;
+}
