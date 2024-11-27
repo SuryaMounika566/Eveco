@@ -1,20 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: sans-serif;
-  
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    transition: 0.5s;
 }
-.container{
-  width: 100vw;
-  min-height: 100vh;
-  background: #8fc789;
-  transition: 0.5s;
+
+.container.dark {
+    background: #222;
+    color: #fff;
 }
-.container.dark{
- background:#222;
+
+.header, .carousel {
+    width: 100%;
+    text-align: center;
 }

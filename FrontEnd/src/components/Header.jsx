@@ -6,6 +6,7 @@ import searchw from '../assets/search-w.png';
 import searchb from '../assets/search-b.png';
 import toggle_light from '../assets/night.png';
 import toggle_night from '../assets/day.png';
+
 const Header = ({ theme, setTheme }) => {
     console.log('Header Component Rendered with theme:', theme);
 
@@ -24,11 +25,11 @@ const Header = ({ theme, setTheme }) => {
             </ul>
             <div className="search-box">
                 <input type="text" placeholder="Search" />
-                <img src={theme === 'light' ? searchw : searchb} alt="Search Icon" />
+                <img src={theme === 'light' ? searchb : searchb} alt="Search Icon" />
             </div>
 
             <div className="auth-links">
-                <Link to="/signin" className="auth-link">Sign In/Sign Up</Link>
+                <Link to="/initial" className="auth-link">Sign In/Sign Up</Link>
                
             </div>
             <img
