@@ -108,7 +108,7 @@ app.post('/login', (req, res) => {
 });
 
 // Endpoint for sending an email
-app.post('/send-email', (req, res) => {
+app.post('/send-query-email', (req, res) => {
     console.log("Received a POST request to /send-email");
     const { email } = req.body;
     if (!email) {
@@ -120,6 +120,38 @@ app.post('/send-email', (req, res) => {
         to: 'project.eveco@gmail.com', // Replace with recipient's email as needed
         subject: 'New Query Submitted',
         text: `A new query has been submitted by: ${email}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            return res.status(500).json({ error: 'Failed to send email' });
+        }
+        console.log('Email sent:', info.response);
+        res.status(200).json({ message: 'Email sent successfully!' });
+    });
+});
+
+app.post('/send-recycle-email', (req, res) => {
+    console.log("Received a POST request to /send-email");
+    const { name, email, location, items } = req.body;
+
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required' });
+    }
+
+    const mailOptions = {
+        from: 'project.eveco@gmail.com',
+        to: 'project.eveco@gmail.com', // Replace with the desired recipient's email
+        subject: 'New Recycle Form Submission',
+        text: `
+            New form submission details:
+            
+            Name: ${name}
+            Email: ${email}
+            Location: ${location}
+            Items to Recycle: ${items}
+        `,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

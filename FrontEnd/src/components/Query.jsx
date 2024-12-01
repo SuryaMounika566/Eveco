@@ -27,7 +27,7 @@ const Query = () => {
         setError("");
 
         try {
-            const response = await fetch("http://localhost:3001/send-email", {
+            const response = await fetch("http://localhost:3001/send-query-email", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email }),
