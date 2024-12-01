@@ -1,0 +1,133 @@
+/* General container for the product page */
+.product-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Back Button Container */
+  .back-button-container {
+    margin-bottom: 40px;
+    text-align: left;
+  }
+  
+  .back-button {
+    padding: 2px 2px;
+    background-color: #118d08;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #18bb09;
+  }
+  
+  /* Product Details Section */
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  /* Add to Cart Section */
+.additional-info {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .info-item {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .add-to-cart-button {
+    margin-top: 15px;
+    padding: 10px 10px;
+    background-color: #051008;
+    color: white;
+    border: none;
+    
+    cursor: pointer;
+    font-size: 16px;
+    
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #218838;
+  }
+  
+  @media (min-width: 768px) {
+    .product-details {
+      flex-direction: row;
+    }
+  }
+  
+  .product-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  
+  .thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow-x: auto;
+  }
+  
+  .thumbnail {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    border-radius: 5px;
+  }
+  
+  .thumbnail.active {
+    border-color: #000;
+  }
+  
+  .main-image img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  
+  .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .product-price {
+    font-size: 20px;
+    color: #f60;
+    margin-bottom: 15px;
+  }
+  
+  .product-description {
+    font-size: 16px;
+    color: #333;
+  }
+  

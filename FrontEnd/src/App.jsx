@@ -12,15 +12,15 @@ import PlaceOrder from './pages/PlaceOrder';
 import Product from './pages/Product';
 import Recycle from './pages/Recycle';
 import ShopContextProvider from './context/ShopContext';
-
 import Footer from './components/Footer';
+import SearchBar from './components/SearchBar';
 
 export default function App() {
   return (
     <div className="container">
       <ShopContextProvider>
         <Router>
-          
+          <SearchBar/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -31,7 +31,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/placeorder" element={<PlaceOrder />} />
-            <Route path="/product" element={<Product />} />
+            <Route path="/product/:productId" element={<Product />} />
           </Routes>
           <Footer />
         </Router>

@@ -55,3 +55,95 @@
     color: #111827; /* Darker color on hover */
   }
   
+
+/* Existing styles (unchanged) */
+.footer-container {
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 1rem; /* Reduce padding for a smaller footer */
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* Text color */
+  display: flex;
+  justify-content: space-between; /* Even spacing between columns */
+  align-items: center; /* Align items vertically */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  gap: 1rem; /* Add spacing between items */
+}
+
+.footer-divider {
+  border-top: 1px solid #e5e7eb; /* Thin gray line */
+  margin-bottom: 1rem; /* Less spacing above footer content */
+}
+
+.footer-logo {
+  width: 6rem; /* Adjust logo width for compact size */
+  margin-right: 1rem;
+}
+
+.footer-section-title {
+  font-size: 1rem; /* Slightly smaller for compact layout */
+  font-weight: 600; /* Bold section titles */
+  color: #1f2937; /* Dark text for section titles */
+  margin-bottom: 0.5rem; /* Less space below title */
+}
+
+/* Flexbox for horizontal lists */
+.footer-links,
+.footer-contact {
+  display: flex; /* Display items in a row */
+  gap: 1rem; /* Add space between list items */
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+  margin: 0; /* Remove default margin */
+  color: #4b5563; /* Text color */
+}
+
+.footer-contact li a {
+  text-decoration: none; /* Remove underline from links */
+  color: #4b5563;
+}
+
+.footer-contact li a:hover {
+  color: #111827; /* Darker color on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center align on smaller screens */
+      text-align: center; /* Center text for better alignment */
+  }
+
+  .footer-links,
+  .footer-contact {
+      justify-content: center; /* Center list items */
+  }
+
+  .footer-logo {
+      margin-bottom: 1rem; /* Add space below the logo */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+      padding: 0.5rem; /* Reduce padding further on small screens */
+      gap: 0.5rem; /* Reduce gap for compact layout */
+  }
+
+  .footer-links,
+  .footer-contact {
+      flex-wrap: wrap; /* Allow wrapping for smaller screens */
+      gap: 0.5rem; /* Reduce spacing */
+  }
+
+  .footer-section-title {
+      font-size: 0.875rem; /* Smaller title size */
+  }
+}
+
+  

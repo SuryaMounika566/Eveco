@@ -8,7 +8,7 @@ const Collection = () => {
   const { products } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
   const[category,setCategory]=useState([]);
 
   const toggleCategory=(e) =>{

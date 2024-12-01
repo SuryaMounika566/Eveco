@@ -1,17 +1,36 @@
+Header.css
 :root {
-    --transition-duration: 0.5s; /* Unified transition duration */
+    --transition-duration: 0.5s; 
 }
-/* Add specific styles for cart icon */
 .navbar img[src*="cart_icon"] {
-    width: 30px !important;   /* Force the size to 16px */
-    height: 30px !important;  /* Force the size to 16px */
-  }
+    width: 30px !important;   
+    height: 30px !important;  
+}
   
-  .navbar .relative img {
-    width:40px !important;   /* Use !important if needed to override other styles */
+.navbar .relative img {
+    width:40px !important; 
     height: 40px !important;
-  }
-  
+}
+
+.navbar .cart-icon-link {
+    position: relative;
+}
+
+.navbar .cart-icon-link p {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #e63946;  
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Navbar Styles */
 .navbar {
@@ -250,16 +269,16 @@ ul li a {
     gap: 10px;
   }
   
-  .sign-out-button {
-    background-color: #ff4d4f;
-    color: white;
+.sign-out-button {
+    background-color: white;
+    color: black;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
   }
   
-  .sign-out-button:hover {
-    background-color: #d9363e;
+.sign-out-button:hover {
+    text-decoration: underline;
   }
   

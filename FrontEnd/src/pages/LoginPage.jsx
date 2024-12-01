@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import styles from '../assets/Login.module.css';
+import { useNavigate , Link } from 'react-router-dom';
+import styles from '../styles/Login.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -23,16 +23,48 @@ export default function Login() {
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', { name, email, password }); // Debugging log
+    if (!email.includes('@')) {
+      alert('Email must contain @');
+      return;
+    }
+    if (password.length < 6) {
+      alert('Password must be at least 6 characters long');
+      return;
+    }
     axios
       .post('http://localhost:3001/register', { name, email, password })
       .then((result) => {
-        console.log(result);
-        localStorage.setItem('userName', name); // Save user name to localStorage
-        navigate('/'); // Redirect to home page
+        localStorage.setItem('userName', name);
+        navigate('/');
       })
       .catch((err) => console.log(err));
   };
+  
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    if (!email.includes('@')) {
+      alert('Email must contain @');
+      return;
+    }
+    if (password.length < 6) {
+      alert('Password must be at least 6 characters long');
+      return;
+    }
+    axios
+      .post('http://localhost:3001/login', { email, password })
+      .then((result) => {
+        const { name } = result.data;
+        localStorage.setItem('userName', name);
+        navigate('/');
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 401) {
+          alert('Invalid email or password');
+        } else {
+          console.log(err);
+        }
+      });
+  };  
 
   return (
     <div className={styles['login-page']}>
@@ -74,7 +106,7 @@ export default function Login() {
         </div>
 
         <div className={`${styles['form-container']} ${styles['sign-in']}`}>
-          <form>
+          <form onSubmit={handleLoginSubmit}>
             <h1 className={styles['bold-text']}>Sign In</h1>
             <div className={styles['social-icons']}>
               <a href="#" className={styles.icon}>
@@ -82,10 +114,23 @@ export default function Login() {
               </a>
             </div>
             <span>or use your email password</span>
-            <input type="email" placeholder="Email" className={styles.input} />
-            <input type="password" placeholder="Password" className={styles.input} />
-            <a href="#" className={styles.link}>Forget Your Password?</a>
-            <button type="button" className={styles.button}>
+            <input
+              type="email"
+              placeholder="Email"
+              className={styles.input}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className={styles.input}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {/* <a href="#" className={styles.link}>Forget Your Password?</a> */}
+            <Link to="forgot-password" className={styles.link}> Forgot Password?</Link>
+            <button type="submit" className={styles.button}>
               Sign In
             </button>
           </form>

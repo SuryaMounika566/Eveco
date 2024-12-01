@@ -15,9 +15,9 @@ import recycle from './recycle.png'
 import box from './box.png'
 import period from './period.jpg'
 import delivery from './delivery.png'
-
+import bin from './bin.png'
 export const assets={
-    decor1,decor2,decor3,plant2,plant3, cutlery1, cutlery2, cart_icon,garland,banner,invite,vases,recycle,box,period,delivery
+    decor1,decor2,decor3,plant2,plant3, cutlery1, cutlery2, cart_icon,garland,banner,invite,vases,recycle,box,period,delivery,bin
 }
 
 export const products = [
