@@ -1,11 +1,20 @@
-const express = require('express');
-const app = express();
-const PORT = 3000;
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+const UserModel = require('./models/Users')
 
-app.get('/', (req, res) => {
-  res.send('Backend is working!');
-});
+const app = express()
+app.use(express.json())
+app.use(cors())
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+mongoose.connect("mongodb://127.0.0.1:27017/Users")
+
+app.post('/register',(req,res) => {
+    UserModel.create(req.body)
+    .then(Users => res.json(Users))
+    .catch(err => res.json(err))
+})
+
+app.listen(3001, () => {
+    console.log("Server is Running!")
+})

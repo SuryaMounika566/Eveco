@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Set a background color */
+  body {
+    background-color: #f4f9f4; /* Light green background */
+    font-family: 'Helvetica', sans-serif;
+    color: #3a6344; /* Subtle green text */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container for the entire Recycle page */
+  .recycle-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  /* Back Button */
+  .back-button {
+    background-color: #28a745; /* Green button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute; /* Positioning it at the top */
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Center it horizontally */
+    z-index: 10; /* Make sure it stays on top */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #218838; /* Darker green */
+    transform: scale(1.05);
+  }
+  
+  /* Image Styling */
+  .recycle-container img {
+    width: 100%; /* Full width */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    height: auto; /* Maintain aspect ratio */
+    padding: 20px 0; /* Add padding above and below the image */
+    margin-top: 20px;
+    display: block; /* Remove any spacing below the image */
+    border-radius: 8px; /* Optional rounded corners */
+    object-fit: cover; /* Ensures the image looks good even if the container is not proportional */
+  }
+  
+  /* Introduction Section */
+  .intro-section {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .intro-section h1 {
+    font-size: 2.5rem;
+    color: #1c4b27;
+    margin-bottom: 15px;
+  }
+  
+  .intro-section p {
+    font-size: 1.1rem;
+    color: #3a6344;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Timeline Container */
+  .how-it-works {
+    margin-bottom: 60px;
+  }
+  
+  .how-it-works h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #1c4b27;
+    margin-bottom: 30px;
+  }
+  
+  /* Timeline */
+  .timeline {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .timeline-step {
+    position: relative;
+    width: 90%;
+    max-width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    transition: transform 0.3s ease;
+  }
+  
+  .timeline-step:hover {
+    transform: scale(1.05);
+  }
+  
+  .timeline-step h3 {
+    font-size: 1.5rem;
+    color: #28a745;
+    margin-bottom: 10px;
+  }
+  
+  .timeline-step p {
+    font-size: 1rem;
+    color: #3a6344;
+  }
+  
+  /* Circle icons next to each step */
+  .timeline-step::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: #28a745;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Timeline Arrows */
+  .timeline-step::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #28a745;
+    z-index: 2;
+  }
+  
+  /* Timeline Container responsive */
+  @media screen and (max-width: 600px) {
+    .timeline {
+      align-items: center;
+    }
+    .timeline-step {
+      width: 90%;
+    }
+    .timeline-step::after {
+      right: unset;
+      left: 50%;
+      transform: translateX(-50%) rotate(180deg);
+    }
+  }
+  
+  /* Form Section */
+  .form-container {
+    padding: 3rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .form-container h2 {
+    font-size: 2rem;
+    color: #1c4b27;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .recycle-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .recycle-form label {
+    font-size: 1.1rem;
+    color: #3a6344;
+  }
+  
+  .recycle-form input,
+  .recycle-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #d1e7d7;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .recycle-form input:focus,
+  .recycle-form textarea:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+  }
+  
+  .recycle-form textarea {
+    resize: vertical;
+    height: 120px;
+  }
+  
+  .submit-button {
+    padding: 1rem 2rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 2rem;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  

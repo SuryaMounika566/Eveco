@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import styles from '../assets/Login.module.css'; 
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import styles from '../assets/Login.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function Login() {
   const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
 
   const handleRegisterClick = () => {
     setIsActive(true);
@@ -14,11 +17,28 @@ export default function Login() {
     setIsActive(false);
   };
 
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleRegisterSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form Data:', { name, email, password }); // Debugging log
+    axios
+      .post('http://localhost:3001/register', { name, email, password })
+      .then((result) => {
+        console.log(result);
+        localStorage.setItem('userName', name); // Save user name to localStorage
+        navigate('/'); // Redirect to home page
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className={styles['login-page']}>
       <div className={`${styles.container} ${isActive ? styles.active : ''}`} id="container">
         <div className={`${styles['form-container']} ${styles['sign-up']}`}>
-          <form>
+          <form onSubmit={handleRegisterSubmit}>
             <h1 className={styles['bold-text']}>Create Account</h1>
             <div className={styles['social-icons']}>
               <a href="#" className={styles.icon}>
@@ -26,10 +46,30 @@ export default function Login() {
               </a>
             </div>
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" className={styles.input} />
-            <input type="email" placeholder="Email" className={styles.input} />
-            <input type="password" placeholder="Password" className={styles.input} />
-            <button type="button" className={styles.button}>Sign Up</button>
+            <input
+              type="text"
+              placeholder="Name"
+              className={styles.input}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              className={styles.input}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className={styles.input}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit" className={styles.button}>
+              Sign Up
+            </button>
           </form>
         </div>
 
@@ -45,7 +85,9 @@ export default function Login() {
             <input type="email" placeholder="Email" className={styles.input} />
             <input type="password" placeholder="Password" className={styles.input} />
             <a href="#" className={styles.link}>Forget Your Password?</a>
-            <button type="button" className={styles.button}>Sign In</button>
+            <button type="button" className={styles.button}>
+              Sign In
+            </button>
           </form>
         </div>
 

@@ -1,0 +1,57 @@
+.footer-container {
+    background-color: #f9f9f9; /* Light gray background for aesthetics */
+    padding: 2rem; /* Add spacing around the footer */
+    font-size: 0.875rem; /* text-sm */
+    color: #6b7280; /* Text color */
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr; /* Layout like the uploaded image */
+    gap: 2rem; /* Space between columns */
+  }
+  
+  .footer-divider {
+    border-top: 1px solid #e5e7eb; /* Thin gray line */
+    margin-bottom: 2rem; /* Add spacing above the footer content */
+  }
+  
+  .footer-logo {
+    margin-bottom: 1.25rem; /* Space below logo */
+    width: 8rem; /* Adjust logo width */
+  }
+  
+  .footer-logo-text {
+    line-height: 1.6; /* Increase line spacing for readability */
+    color: #4b5563; /* Slightly darker text */
+  }
+  
+  .footer-section-title {
+    font-size: 1.25rem; /* Text-xl */
+    font-weight: 600; /* Slightly bold */
+    color: #1f2937; /* Dark text for section titles */
+    margin-bottom: 1rem; /* Space below title */
+  }
+  
+  .footer-links,
+  .footer-contact {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+  }
+  
+  .footer-links li,
+  .footer-contact li {
+    margin-bottom: 0.5rem; /* Add space between items */
+    color: #4b5563; /* Text color */
+  }
+  
+  .footer-contact li {
+    font-size: 0.875rem; /* Slightly smaller for contact info */
+  }
+  
+  .footer-contact li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #4b5563;
+  }
+  
+  .footer-contact li a:hover {
+    color: #111827; /* Darker color on hover */
+  }
+  

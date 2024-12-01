@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import slide1 from '../assets/Slide1.png';
-import slide2 from '../assets/Slide2.png';
-import slide3 from '../assets/Slide3.png';
-import slide4 from '../assets/Slide4.png';
+import slide1 from "../assets/Slide1.png";
+import slide2 from "../assets/Slide2.png";
+import slide3 from "../assets/Slide3.png";
+import slide4 from "../assets/Slide4.png";
 
 const images = [slide1, slide2, slide3, slide4];
-
 
 function Carousel() {
   const [current, setCurrent] = useState(0);
@@ -14,37 +13,36 @@ function Carousel() {
   const nextSlide = () => {
     if (transitioning) return;
     setTransitioning(true);
-    setTimeout(() => setTransitioning(false), 500); 
+    setTimeout(() => setTransitioning(false), 500);
     setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
     if (transitioning) return;
     setTransitioning(true);
-    setTimeout(() => setTransitioning(false), 500); 
+    setTimeout(() => setTransitioning(false), 500);
     setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   useEffect(() => {
     const interval = setInterval(nextSlide, 20000);
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div
-      className="slider-container relative mx-auto"
+      className="slider-container"
       style={{
-        width: "1150px",
-        height: "520px",
         position: "relative",
         overflow: "hidden",
         borderRadius: "10px",
+        width: "100%",
+        maxWidth: "1150px",
+        height: "auto",
         margin: "20px auto",
-        backgroundColor: "#f8f8f8",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
       }}
     >
-      {/* Images */}
+      {/* Image Slider */}
       <div
         className="slider-images"
         style={{
@@ -59,10 +57,10 @@ function Carousel() {
             src={image}
             alt={`Slide ${index + 1}`}
             style={{
-              width: "1150px",
-              height: "520px",
-              objectFit: "cover",
+              width: "100%",
+              height: "auto",
               flexShrink: 0,
+              objectFit: "contain", // Ensures full image is displayed
             }}
           />
         ))}
@@ -70,21 +68,23 @@ function Carousel() {
 
       {/* Left Arrow */}
       <div
-        className="left-arrow absolute top-1/2 transform -translate-y-1/2 left-0 bg-gray-200 hover:bg-gray-400 hover:text-white p-3 rounded-full cursor-pointer flex items-center justify-center"
         onClick={prevSlide}
         style={{
           position: "absolute",
           top: "50%",
           left: "10px",
+          transform: "translateY(-50%)",
           zIndex: 10,
           width: "40px",
           height: "40px",
           backgroundColor: "#fff",
+          border: "2px solid black",
           borderRadius: "50%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           cursor: "pointer",
+          color: "black",
           boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
         }}
       >
@@ -94,7 +94,7 @@ function Carousel() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          style={{ width: "20px", height: "20px", color: "black" }}
         >
           <path
             strokeLinecap="round"
@@ -106,21 +106,23 @@ function Carousel() {
 
       {/* Right Arrow */}
       <div
-        className="right-arrow absolute top-1/2 transform -translate-y-1/2 right-0 bg-gray-200 hover:bg-gray-400 hover:text-white p-3 rounded-full cursor-pointer flex items-center justify-center"
         onClick={nextSlide}
         style={{
           position: "absolute",
           top: "50%",
           right: "10px",
+          transform: "translateY(-50%)",
           zIndex: 10,
           width: "40px",
           height: "40px",
           backgroundColor: "#fff",
+          border: "2px solid black",
           borderRadius: "50%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           cursor: "pointer",
+          color: "black",
           boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
         }}
       >
@@ -130,7 +132,7 @@ function Carousel() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          style={{ width: "20px", height: "20px", color: "black" }}
         >
           <path
             strokeLinecap="round"

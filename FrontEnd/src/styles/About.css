@@ -1,0 +1,200 @@
+/* General Container Styling */
+.about-container {
+  font-family: 'Arial', sans-serif;
+  padding: 2rem;
+  background-color: #f9f9f9; /* Matches footer background */
+  color: #333;
+  line-height: 1.6;
+}
+
+/* About Us Section */
+.about-us-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.about-image {
+  flex: 1;
+  max-width: 400px;
+}
+
+.about-img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+  flex: 2;
+}
+
+.about-text h2 {
+  font-size: 2rem; /* Slightly smaller for consistency */
+  color: #144e1e; /* Matches the subheading text color */
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 1rem;
+  text-align: justify;
+}
+
+/* Shared Section Styling for "Our Mission" and "About Us" */
+.our-mission-section,
+.about-us-section {
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.our-mission-section h2,
+.about-text h2 {
+  font-size: 2rem;
+  color: #144e1e;
+}
+
+.our-mission-section p {
+  font-size: 1rem;
+  text-align: justify;
+  margin: auto; /* Center aligns the text block */
+  max-width: 700px;
+}
+
+/* Align About Us and Our Mission Differently */
+.about-us-section {
+  align-items: flex-start;
+}
+
+.our-mission-section {
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Why Choose Us Section */
+.why-choose-us-section {
+  padding: 2rem 0;
+  background-color: #eef7f6;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.why-choose-us-section h2 {
+  font-size: 2rem;
+  color: #144e1e;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Card Container */
+.features-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Individual Feature Card */
+.feature-item {
+  flex: 1 1 300px;
+  max-width: 350px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Feature Titles */
+.feature-item h3 {
+  color: #144e1e;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Feature Descriptions */
+.feature-item p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #80b36e; 
+  border: none;
+  border-radius: 30px; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  text-transform: uppercase; 
+}
+
+.back-button:hover {
+  background-color: #73d76c; /* Darker blue when hovered */
+  transform: scale(1.05); 
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
+}
+
+.back-button:active {
+  background-color: #66bb6f; /* Even darker blue when clicked */
+  transform: scale(0.98); /* Slightly shrink when clicked for a cool press effect */
+}
+
+.back-button span {
+  margin-right: 8px; /* Add a little space between icon and text */
+}
+
+.back-button i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+  transform: translateX(-5px); /* Slight movement to the left for the arrow */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-us-section,
+  .our-mission-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-image {
+    max-width: 100%;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .features-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-item {
+    max-width: 100%;
+  }
+}

@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../components/HomePage_Header';
+import React from 'react';
 import Carousel from '../components/HomePage_Carousel';
+import Latest from '../components/Latest';
+import OurPolicy from '../components/OurPolicy';
+import Query from '../components/Query';
+import Header from '../components/HomePage_Header';
 
 export default function HomePage() {
-    const curr_theme = localStorage.getItem('curr_theme');
-    const [theme, setTheme] = useState(curr_theme ? curr_theme : 'light');
-
-    useEffect(() => {
-        localStorage.setItem('curr_theme', theme);
-    }, [theme]);
-
     return (
-        <div className={`container ${theme}`}>
-            <Header theme={theme} setTheme={setTheme} />
+        <div>
+            <Header/>
             <Carousel />
+            <Latest />
+            <OurPolicy />
+            <Query />
         </div>
     );
 }

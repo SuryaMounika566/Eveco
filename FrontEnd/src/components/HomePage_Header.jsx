@@ -1,46 +1,49 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Header.css';
+import { Link, useNavigate } from 'react-router-dom';
+import '../styles/Header.css';
 import logo from '../assets/logo.png';
 import searchw from '../assets/search-w.png';
-import searchb from '../assets/search-b.png';
-import toggle_light from '../assets/night.png';
-import toggle_night from '../assets/day.png';
-const Header = ({ theme, setTheme }) => {
-    console.log('Header Component Rendered with theme:', theme);
+import { assets } from '../assets/assets';
 
-    const toggle_mode = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+const Header = () => {
+  const navigate = useNavigate();
+  const userName = localStorage.getItem('userName'); // Retrieve user name
 
-    return (
-        <div className={`navbar ${theme}`}>
-            <img src={logo} alt="Logo" className="logo" />
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/products">Products</Link></li>
-                <li><Link to="/recycle">Recycle</Link></li>
-                <li><Link to="/about">About</Link></li>
-            </ul>
-            <div className="search-box">
-                <input type="text" placeholder="Search" />
-                <img src={theme === 'light' ? searchw : searchb} alt="Search Icon" />
-            </div>
+  const handleSignOut = () => {
+    localStorage.removeItem('userName'); // Clear user session
+    navigate('/'); // Redirect to home page
+  };
 
-            <div className="auth-links">
-            <Link to="/login" className="auth-link">Sign In/Sign Up</Link>
-
-               
-            </div>
-            <img
-                onClick={toggle_mode}
-                src={theme === 'light' ? toggle_light : toggle_night}
-                alt="Toggle Icon"
-                className="toggle-icon"
-            />
-        </div>
-    );
+  return (
+    <div className="navbar">
+      <img src={logo} alt="Logo" className="logo" />
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/recycle">Recycle</Link></li>
+        <li><Link to="/collection">Collections </Link></li>
+        <li><Link to="/about">About</Link></li>
+      </ul>
+      <div className="search-box">
+        <input type="text" placeholder="Search" />
+        <img src={searchw} alt="Search Icon" />
+      </div>
+      <div className="auth-links">
+        {userName ? (
+          <div className="user-controls">
+            <span className="auth-link">Welcome, {userName}</span>
+            <button className="sign-out-button" onClick={handleSignOut}>
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <Link to="/login" className="auth-link">Sign In/Sign Up</Link>
+        )}
+      </div>
+      <Link to="/cart" className="cart-icon-link">
+        <img src={assets.cart_icon} alt="Cart Icon" className="cart-icon" />
+      </Link>
+    </div>
+  );
 };
-
 
 export default Header;

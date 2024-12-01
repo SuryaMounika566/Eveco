@@ -1,0 +1,114 @@
+/* Container for the entire section */
+.query-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #f4f9f4; /* Light green background */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    margin: 2rem auto;
+    font-family: "Arial", sans-serif;
+}
+
+/* Title styling */
+.query-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1c4b27; /* Dark green */
+    margin-bottom: 0.5rem;
+}
+
+/* Description styling */
+.query-description {
+    font-size: 1rem;
+    color: #3a6344; /* Subtle green */
+    margin-bottom: 2rem;
+}
+
+/* Form styling */
+.query-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Input field */
+.query-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #d1e7d7; /* Light border */
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
+}
+
+.query-input::placeholder {
+    color: #aaa; /* Placeholder color */
+}
+
+.query-input:focus {
+    border-color: #5ab65a; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(90, 182, 90, 0.5);
+}
+
+/* Error styling for input */
+.input-error {
+    border-color: #e57373; /* Red border */
+}
+
+.query-error {
+    color: #e57373; /* Red error message */
+    font-size: 0.875rem;
+    margin-top: -0.5rem;
+    text-align: left;
+}
+
+/* Button styling */
+.query-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #28a745; /* Green button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.query-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05);
+}
+
+.query-button:active {
+    background-color: #1e7e34; /* Even darker green */
+}
+
+/* Success message */
+.query-success {
+    font-size: 1rem;
+    color: #155724; /* Success green */
+    padding: 2rem;
+    background-color: #d4edda; /* Light green success background */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.query-success h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.query-success p {
+    font-size: 1rem;
+    color: #155724;
+}
