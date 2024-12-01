@@ -1,6 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate , Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
 import styles from '../styles/Login.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -39,7 +40,7 @@ export default function Login() {
       })
       .catch((err) => console.log(err));
   };
-  
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     if (!email.includes('@')) {
@@ -64,7 +65,40 @@ export default function Login() {
           console.log(err);
         }
       });
-  };  
+  };
+
+  const decodeJWT = (token) => {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+      return JSON.parse(jsonPayload);
+    } catch (e) {
+      console.error('Failed to decode JWT', e);
+      return null;
+    }
+  };
+
+  const handleGoogleSuccess = (credentialResponse) => {
+    const token = credentialResponse.credential;
+    const decoded = decodeJWT(token);
+    if (decoded) {
+      console.log('Google user:', decoded);
+      localStorage.setItem('userName', decoded.name);
+      navigate('/');
+    } else {
+      console.error('Invalid Google token');
+    }
+  };
+
+  const handleGoogleError = () => {
+    console.log('Google login failed');
+  };
 
   return (
     <div className={styles['login-page']}>
@@ -73,9 +107,7 @@ export default function Login() {
           <form onSubmit={handleRegisterSubmit}>
             <h1 className={styles['bold-text']}>Create Account</h1>
             <div className={styles['social-icons']}>
-              <a href="#" className={styles.icon}>
-                <i className="fa-brands fa-google"></i>
-              </a>
+              <GoogleLogin onSuccess={handleGoogleSuccess} onError={handleGoogleError} />
             </div>
             <span>or use your email for registration</span>
             <input
@@ -109,9 +141,7 @@ export default function Login() {
           <form onSubmit={handleLoginSubmit}>
             <h1 className={styles['bold-text']}>Sign In</h1>
             <div className={styles['social-icons']}>
-              <a href="#" className={styles.icon}>
-                <i className="fa-brands fa-google"></i>
-              </a>
+              <GoogleLogin onSuccess={handleGoogleSuccess} onError={handleGoogleError} />
             </div>
             <span>or use your email password</span>
             <input
@@ -128,8 +158,9 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {/* <a href="#" className={styles.link}>Forget Your Password?</a> */}
-            <Link to="forgot-password" className={styles.link}> Forgot Password?</Link>
+            <Link to="forgot-password" className={styles.link}>
+              Forgot Password?
+            </Link>
             <button type="submit" className={styles.button}>
               Sign In
             </button>
@@ -141,8 +172,8 @@ export default function Login() {
             <div className={`${styles['toggle-panel']} ${styles['toggle-left']}`}>
               <h1 className={styles['bold-text']}>Welcome Back!</h1>
               <p>
-                Reconnect and contribute to a sustainable future. Access your
-                account to continue supporting a circular economy.
+                Reconnect and contribute to a sustainable future. Access your account to continue
+                supporting a circular economy.
               </p>
               <button
                 className={styles.hidden}
@@ -156,8 +187,8 @@ export default function Login() {
             <div className={`${styles['toggle-panel']} ${styles['toggle-right']}`}>
               <h1 className={styles['bold-text']}>Join Our Mission!</h1>
               <p>
-                Start your journey towards sustainability. Purchase eco-friendly
-                materials, and help us recycle and reuse for a greener planet.
+                Start your journey towards sustainability. Purchase eco-friendly materials, and help
+                us recycle and reuse for a greener planet.
               </p>
               <button
                 className={styles.hidden}

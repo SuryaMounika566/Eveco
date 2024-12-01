@@ -2,16 +2,80 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const passport = require('passport');
+const session = require('express-session');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const UserModel = require('./models/Users');
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 
 // MongoDB connection
 mongoose.connect("mongodb://127.0.0.1:27017/Users")
     .then(() => console.log('MongoDB connected successfully'))
     .catch(err => console.error('MongoDB connection error:', err));
+
+// Passport setup
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Configure Google strategy
+passport.use(new GoogleStrategy({
+    clientID: '322280829950-b4vff9cpimna8k4079lre46t447muurn.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: 'http://localhost:3001/auth/google/callback'
+}, async (accessToken, refreshToken, profile, done) => {
+    try {
+        let user = await UserModel.findOne({ googleId: profile.id }); 
+        if (!user) {
+            user = new UserModel({
+                name: profile.displayName,
+                email: profile.emails[0].value,
+                googleId: profile.id
+            });
+            await user.save(); // Save to MongoDB
+        }
+        done(null, user); // Return the user object
+    } catch (err) {
+        done(err, null); // Handle error
+    }
+}));
+
+
+// Serialize user into session
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+// Deserialize user from session
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await UserModel.findById(id);
+        done(null, user);
+    } catch (err) {
+        done(err, null);
+    }
+});
+
+// Endpoint for starting Google login
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+// Callback endpoint for Google login
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    (req, res) => {
+        res.redirect('/');
+    });
+
+// Endpoint for logging out
+app.get('/logout', (req, res) => {
+    req.logout((err) => {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
+});
 
 // Nodemailer configuration for sending emails
 const transporter = nodemailer.createTransport({
