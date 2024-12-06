@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Footer.css';
-
+import {Link} from 'react-router-dom';
 import logo from '../assets/logo.png'
 
 const Footer = () => {
@@ -14,10 +14,10 @@ const Footer = () => {
           <div>
             <p className="footer-section-title">COMPANY</p>
             <ul className="footer-links">
-              <li>Home</li>
-              <li>About Us</li>
-              <li>Delivery</li>
-              <li>Privacy Policy</li>
+            <li><Link to="/">Home</Link></li>
+        <li><Link to="/recycle">Recycle</Link></li>
+        <li><Link to="/collection">Collections</Link></li>
+        <li><Link to="/about">About</Link></li>
             </ul>
           </div>
   

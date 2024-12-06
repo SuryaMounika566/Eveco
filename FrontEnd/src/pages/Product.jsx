@@ -47,13 +47,13 @@ const Product = () => {
             <img src={image} alt={productData.name} />
           </div>
         </div>
-
+  
         <div className="product-info">
           <h1 className="product-name">{productData.name}</h1>
           <p className="product-price">
-            {currency} {productData.price}
+            {currency} {productData.price.toFixed(2)}
           </p>
-          <p className="product-description">{productData.description}</p>
+          <p className="product-description">{productData.desc}</p>
 
           {/* Add to Cart Section */}
           <div className="additional-info">

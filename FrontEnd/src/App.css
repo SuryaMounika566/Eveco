@@ -1,0 +1,8 @@
+body {
+    background-image: url('./assets/bg4.jpg'); /* Replace with the path to your image */
+    background-size: cover; /* Ensure the image covers the entire page */
+    background-repeat: no-repeat; /* Avoid repeating the image */
+    background-attachment: fixed; /* Keep the image fixed during scroll */
+    margin: 0;
+
+}

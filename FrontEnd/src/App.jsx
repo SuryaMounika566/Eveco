@@ -17,7 +17,7 @@ import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import Header from './components/Header';
 
-
+import './App.css';
 
 export default function App() {
   const CLIENT_ID = '322280829950-b4vff9cpimna8k4079lre46t447muurn.apps.googleusercontent.com'; 

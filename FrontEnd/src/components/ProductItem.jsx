@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { Link } from 'react-router-dom';
 
-const ProductItem = ({ id, image, name, price }) => {
+const ProductItem = ({ id, image, name, price, desc }) => {
   const { currency } = useContext(ShopContext);
 
   return (
@@ -11,7 +11,11 @@ const ProductItem = ({ id, image, name, price }) => {
         <img className="product-image" src={image[0]} alt={name} />
       </div>
       <p className="product-name">{name}</p>
-      <p className="product-price">{currency}{price}</p>
+      <p className="product-desc">{desc}</p>
+      <p className="product-price">
+        {currency}
+        {price.toFixed(2)} {/* Ensures price is displayed with two decimal places */}
+      </p>
 
       {/* Embedded CSS */}
       <style>{`
@@ -48,6 +52,13 @@ const ProductItem = ({ id, image, name, price }) => {
           padding-top: 0.75rem; 
           padding-bottom: 0.25rem;
           font-size: 0.875rem; 
+          font-weight: bold;
+        }
+
+        .product-desc {
+          font-size: 0.75rem;
+          color: #6b7280; /* Subtle text color */
+          margin-bottom: 0.5rem;
         }
 
         .product-price {

@@ -19,7 +19,9 @@ const Header = () => {
 
   return (
     <div className="navbar">
+      <Link to="/" >
       <img src={logo} alt="Logo" className="logo" />
+    </Link>
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/recycle">Recycle</Link></li>
