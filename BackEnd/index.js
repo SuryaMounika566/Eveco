@@ -148,6 +148,38 @@ app.post('/send-recycle-email', (req, res) => {
     });
 });
 
+app.post('/reset-password/:id', (req, res) => {
+    const { id } = req.params; // Get the user ID from the URL parameters
+    const { password } = req.body; // Get the new password from the request body
+
+    // Hash the password before storing it in the database
+    bcrypt.hash(password, 10)
+        .then(hash => {
+            // Update the user's password in the database
+            UserModel.findByIdAndUpdate({ _id: id }, { password: hash })
+                .then(() => res.send({ Status: "Success" }))
+                .catch(err => res.send({ Status: "Error updating password", Error: err }));
+        })
+        .catch(err => res.send({ Status: "Error hashing password", Error: err }));
+});
+
+app.post('/forgot-password', (req, res) => {
+    const { email } = req.body;
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required' });
+    }
+
+    // Example: Find the user and send a reset password email (dummy response here)
+    UserModel.findOne({ email })
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({ error: 'User not found' });
+            }
+            res.json({ message: 'Reset link sent (dummy response)' });
+        })
+        .catch(err => res.status(500).json(err));
+});
+
 // Start the server
 app.listen(3001, () => {
     console.log("Server is running on http://localhost:3001");

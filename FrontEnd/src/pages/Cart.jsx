@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Title from '../components/Title';
 import { assets } from '../assets/assets';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
-import '../styles/Cart.css'; // Path to the CSS file
+import { Navigate, useNavigate } from 'react-router-dom';  
+import '../styles/Cart.css'; 
 
 const Cart = () => {
   const { products, currency, cartItems, updateQuantity } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
-  const navigate = useNavigate();  // Initialize useNavigate
+  const navigate=useNavigate();
 
   useEffect(() => {
     const tempData = [];
@@ -19,7 +19,7 @@ const Cart = () => {
           tempData.push({
             _id: itemId,
             name: product.name,
-            image: product.image[0],  // Assuming image[0] is the main image
+            image: product.image[0],  
             price: product.price,
             quantity: cartItems[itemId],
           });
@@ -56,7 +56,7 @@ const Cart = () => {
               </div>
               <div className="cart-item-remove">
                 <img
-                  onClick={() => updateQuantity(item._id, 0)}  // Remove item from cart
+                  onClick={() => updateQuantity(item._id, 0)}  
                   className="remove-icon"
                   src={assets.bin}
                   alt="Remove Item"
@@ -70,7 +70,7 @@ const Cart = () => {
       )}
 
       <div className="back-to-home-container">
-        <button className="back-to-home-button" onClick={() => navigate('/')}>Back to Home</button>
+        <button className ="back-to-home-button" onClick={()=> navigate('/placeorder')}>Payment </button>
       </div>
     </div>
   );

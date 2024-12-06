@@ -45,9 +45,7 @@ export default function Recycle() {
 
     return (
         <div className="recycle-container">
-            <button className="back-button" onClick={() => navigate('/')}>
-                Back to Homepage
-            </button>
+           
             <img src={logo2} alt="Eveco logo" />
 
             <div className="intro-section">

@@ -8,9 +8,7 @@ export default function AboutUs() {
     return (
         <div className="about-container">
             {/* Back Button */}
-            <button className="back-button" onClick={() => navigate('/')}>
-                Back to Homepage
-            </button>
+            
 
             {/* About Us Section */}
             <div className="about-us-section">

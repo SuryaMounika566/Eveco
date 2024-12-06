@@ -27,12 +27,7 @@ const Product = () => {
 
   return (
     <div className="product-page">
-      {/* Back Button */}
-      <div className="back-button-container">
-        <button className="back-button" onClick={() => navigate('/')}>
-          Back to Home
-        </button>
-      </div>
+      
 
       {/* Product Details */}
       <div className="product-details">

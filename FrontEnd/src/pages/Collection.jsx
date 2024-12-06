@@ -37,10 +37,7 @@ const Collection = () => {
   },[category])
   return (
     <div className="collection-container">
-      {/* Back Button */}
-      <button className="back-button" onClick={() => navigate('/')}>
-        Back to Homepage
-      </button>
+     
 
       <div className="collection-content">
         {/* Filters Section */}

@@ -35,6 +35,9 @@ Header.css
 /* Navbar Styles */
 .navbar {
     width: 100%;
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,7 +48,6 @@ Header.css
     transition: background-color var(--transition-duration), box-shadow var(--transition-duration);
 }
 
-/* Global body dark mode styles */
 body.dark {
     background-color: #b0ecb2;
     color: #fff;

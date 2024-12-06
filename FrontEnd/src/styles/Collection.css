@@ -124,6 +124,8 @@
   border-radius: 5px;
   object-fit: cover;
   margin-bottom: 10px;
+  width: 150px;
+    height:200px;
 }
 
 .product-item p {
